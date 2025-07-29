@@ -9,6 +9,7 @@ import jakarta.persistence.*;
 
 
 import java.time.LocalDateTime;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -26,7 +27,7 @@ public class UserModel {
     private String cpf;
 
     @Column
-    private String user;
+    private String username;
 
     @Column(nullable = false, length = 255)
     @JsonIgnore
@@ -52,4 +53,12 @@ public class UserModel {
     @Column(nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
     private LocalDateTime lastUpdateDate;
+
+    @ManyToMany
+    @JoinTable(
+            name = "TB_USER_EVENTS",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "event_id")
+    )
+    private Set<EventModel> events;
 }
