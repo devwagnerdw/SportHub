@@ -3,11 +3,14 @@ package com.SportHub.models;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.UUID;
 
+@Entity
+@Table(name = "TB_SPACE")
 public class SpaceModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID spaceID;
 
     private String name;
 

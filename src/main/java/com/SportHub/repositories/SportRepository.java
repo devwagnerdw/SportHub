@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 
-public interface SportRepository extends JpaRepository<UUID, SportModel> {
+public interface SportRepository extends JpaRepository<SportModel,UUID> {
 }
